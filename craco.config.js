@@ -3,10 +3,15 @@ const path = require("path");
 
 module.exports = {
   webpack: {
-    alias: {},
+    resolve: {
+      alias: {
+        // Add any other aliases you need here...
+        "process/browser": require.resolve("process/browser.js"), // Ensure full path with extension
+      },
+    },
     plugins: [
       new webpack.ProvidePlugin({
-        process: "process/browser",
+        process: "process/browser.js", // Ensure full path with extension
       }),
     ],
     configure: {
